@@ -1,0 +1,51 @@
+<div class="flex justify-center items-center my-10 ">
+  <div class="flex flex-col md:flex-row bg-white rounded-2xl shadow-2xl p-10 w-[90%] max-w-4xl overflow-hidden transform transition duration-500 hover:scale-105">
+    <!-- Image Section -->
+    <div class="hidden md:flex justify-center items-center md:w-1/2">
+      <img src="assests/images/signup.webp" alt="Welcome Image" class="w-full h-auto object-cover rounded-xl shadow-lg animate-fade-in-left">
+    </div>
+
+    <!-- Form Section -->
+    <div class="md:w-1/2 px-6 flex flex-col justify-center">
+      <h2 class="text-4xl font-bold text-center mb-8 animate-fade-in-down" style="color: #624E88;">Inscription</h2>
+      <form class="animate-slide-in-right">
+        <div class="mb-5">
+          <label class="block text-gray-700 font-semibold mb-2" for="username">Nom d'utilisateur</label>
+          <input
+            type="text"
+            id="username"
+            class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700 transition-transform duration-300 hover:scale-105"
+            placeholder="Nom d'utilisateur"
+          />
+        </div>
+        <div class="mb-5">
+          <label class="block text-gray-700 font-semibold mb-2" for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700 transition-transform duration-300 hover:scale-105"
+            placeholder="Email"
+          />
+        </div>
+        <div class="mb-6">
+          <label class="block text-gray-700 font-semibold mb-2" for="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            class="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-700 transition-transform duration-300 hover:scale-105"
+            placeholder="Mot de passe"
+          />
+        </div>
+        <button
+          type="button"
+          class="w-full bg-purple-700 text-white font-semibold py-3 rounded-lg hover:bg-purple-800 transition-transform duration-300 transform hover:scale-105"
+          (click)="onSignup()"
+        >
+          S'inscrire
+        </button>
+      </form>
+      <p class="text-red-500 mt-6 text-center animate-fade-in-up">{{ message }}</p>
+    </div>
+  </div>
+</div>
+
