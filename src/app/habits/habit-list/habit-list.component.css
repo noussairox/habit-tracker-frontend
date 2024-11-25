@@ -1,0 +1,56 @@
+/* habit-list.component.css */
+.habit-list {
+    @apply bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-200 p-6 rounded-lg shadow-lg max-w-4xl mx-auto mt-10;
+  }
+  
+  .habit-list h1 {
+    @apply text-4xl font-bold text-center mb-8 text-purple-900;
+  }
+  
+  .filters {
+    @apply flex flex-col md:flex-row justify-between items-center mb-6 gap-4;
+  }
+  
+  .filters label {
+    @apply font-semibold text-purple-700;
+  }
+  
+  .filters select {
+    @apply border border-purple-300 rounded px-3 py-2 bg-white text-purple-700 shadow focus:outline-none focus:ring-2 focus:ring-purple-500;
+  }
+  
+  ul {
+    @apply space-y-6;
+  }
+  
+  li {
+    @apply flex justify-between items-start p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out;
+  }
+  
+  li div {
+    @apply space-y-2;
+  }
+  
+  li h3 {
+    @apply text-lg font-bold text-purple-800;
+  }
+  
+  li p {
+    @apply text-sm text-purple-600;
+  }
+  
+  button {
+    @apply px-4 py-2 text-sm font-semibold rounded shadow hover:bg-purple-600 hover:text-white transition-colors duration-300;
+  }
+  
+  .add-button {
+    @apply mt-6 block mx-auto bg-purple-500 text-white;
+  }
+  li {
+    @apply transition-transform transform hover:scale-105 duration-200 ease-in-out;
+  }
+  
+  li:hover {
+    @apply bg-purple-100;
+  }
+    

@@ -1,20 +1,43 @@
 <nav class="bg-[#814c93] text-white p-4 flex justify-between items-center">
-  <div class="text-2xl font-bold">Habit Manager</div>
-  <ul class="flex space-x-4">
-    <li><a href="#" class="hover:text-[#FFDFD6]">Home</a></li>
-    <li><a href="#" class="hover:text-[#FFDFD6]">Habits</a></li>
-    <li><a href="#" class="hover:text-[#FFDFD6]">Profile</a></li>
-    <li><a href="#" class="hover:text-[#FFDFD6]">About</a></li>
-  </ul>
-  <div *ngIf="isAuthenticated()">
-    <span class="mr-4">Bienvenue, {{ username }}</span>
-    <button (click)="logout()" class="bg-red-700 px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-red-400 hover:text-black">
-      Déconnexion
-    </button>
+  <!-- Logo -->
+  <div class="text-2xl font-bold">
+    <a href="/homePage" class="hover:text-[#FFDFD6]">Habit Manager</a>
   </div>
-  <div *ngIf="!isAuthenticated()">
-    <a href="/signin" class="bg-[#547427] px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-[#E6D9A2] hover:text-black">
+
+  <!-- Liens de navigation -->
+  <ul class="flex space-x-4">
+    <!-- Affiche Home uniquement avant ou après la connexion -->
+    <li>
+      <a href="/homePage" class="hover:text-[#FFDFD6]">Home</a>
+    </li>
+
+    <!-- Liens affichés uniquement après la connexion -->
+    <li *ngIf="isAuthenticated()">
+      <a href="/dashboard" class="hover:text-[#FFDFD6]">Dashboard</a>
+    </li>
+    <li *ngIf="isAuthenticated()">
+      <a href="/habits" class="hover:text-[#FFDFD6]">Habits</a>
+    </li>
+    <li *ngIf="isAuthenticated()">
+      <a href="/profile" class="hover:text-[#FFDFD6]">Profile</a>
+    </li>
+  </ul>
+
+  <!-- Boutons Connexion / Déconnexion -->
+  <div>
+    <!-- Afficher Connexion uniquement avant la connexion -->
+    <a *ngIf="!isAuthenticated()" href="/signin" 
+       class="bg-[#547427] px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-[#E6D9A2] hover:text-black">
       Connexion
     </a>
+
+    <!-- Afficher Déconnexion uniquement après la connexion -->
+    <div *ngIf="isAuthenticated()" class="flex items-center space-x-4">
+      <span>Bienvenue, {{ username }}</span>
+      <button (click)="logout()" 
+              class="bg-red-700 px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-red-400 hover:text-black">
+        Déconnexion
+      </button>
+    </div>
   </div>
 </nav>

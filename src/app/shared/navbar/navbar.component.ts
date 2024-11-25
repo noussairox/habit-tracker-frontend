@@ -13,17 +13,15 @@ export class NavbarComponent {
   username: string | null = '';
 
   constructor(private authService: AuthService) {
-    this.username = this.authService.getUsername();
-
+    this.username = this.authService.getUsername(); // Récupérer le nom d'utilisateur
   }
 
   isAuthenticated(): boolean {
-    return this.authService.isAuthenticated();
-
+    return this.authService.isAuthenticated(); // Vérifier l'authentification
   }
 
   logout() {
     this.authService.logout();
-    window.location.reload(); // Rafraîchir ou rediriger
+    window.location.href = '/signin'; // Redirection après déconnexion
   }
 }
