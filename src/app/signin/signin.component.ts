@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent {
   username: string = '';
@@ -20,25 +20,36 @@ export class SigninComponent {
   onSignin() {
     const user = {
       username: this.username,
-      password: this.password
+      password: this.password,
     };
   
-    this.authService.signin(user).subscribe(
-      (response) => {
-        console.log('Réponse de l\'API :', response); // Journal pour vérifier la réponse
+    this.authService.signin(user).subscribe({
+      next: (response) => {
+        console.log('Réponse de l\'API :', response);
   
-        // Vérifiez et enregistrez le token
+        // Sauvegarder le token et rediriger
         if (response.token) {
           this.authService.saveUserDetails(response.token, user.username);
-          console.log('Token récupéré après authentification:', response.token);
-          this.router.navigate(['/dashboard']);
+          const savedToken = this.authService.getToken();
+          if (savedToken) {
+            console.log('Token correctement sauvegardé :', savedToken);
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.message = "Erreur : Le token n'a pas été sauvegardé correctement.";
+          }
         } else {
           this.message = "Erreur : Aucun token reçu de l'API.";
         }
       },
-      (error) => {
-        this.message = "Erreur : Nom d'utilisateur ou mot de passe incorrect !";
-      }
-    );  
+      error: (err) => {
+        console.error('Erreur d\'authentification :', err);
+        if (err.error && err.error.message) {
+          this.message = `Erreur : ${err.error.message}`;
+        } else {
+          this.message = "Erreur : Nom d'utilisateur ou mot de passe incorrect !";
+        }
+      },
+    });
   }
+  
 }

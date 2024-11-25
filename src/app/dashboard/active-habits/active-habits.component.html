@@ -1,0 +1,11 @@
+<div class="habits-container bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+    <h2 class="text-xl font-bold text-[#694F8E] mb-4">Habitudes actives</h2>
+    <ul class="space-y-4">
+        <li *ngFor="let habit of activeHabits" class="habit-item flex items-center justify-between p-3 bg-gray-100 rounded-md hover:bg-gray-200 transition">
+            <span class="text-lg font-medium">{{ habit.name }}</span>
+            <button class="btn-complete bg-[#853f65] text-white px-4 py-2 rounded-md font-medium hover:bg-[#B692C2] transition">
+                Compléter
+            </button>
+        </li>
+    </ul>
+</div>

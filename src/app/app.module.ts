@@ -2,24 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    SignupComponent,
-    SigninComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, // Toujours nécessaire pour ngModel si utilisé
   ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [], // Vide si vous utilisez bootstrapApplication
 })
 export class AppModule {}
