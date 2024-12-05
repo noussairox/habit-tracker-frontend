@@ -16,7 +16,7 @@ export class HabitFormComponent implements OnInit {
     name: '',
     description: '',
     frequency: 'quotidienne',
-    isActive: true,
+    active: true,
     startDate: '',
     endDate: '',
     targetCount: 0,
@@ -31,12 +31,17 @@ export class HabitFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id'); // Récupère l'ID depuis l'URL
     if (id) {
       this.isEditing = true;
+      console.log('Chargement de l\'habitude avec ID :', id); // Debugging
       this.habitService.getHabitById(+id).subscribe(
         (data) => {
-          this.habit = data;
+          console.log('Habitude chargée :', data); // Vérifiez ce que le backend renvoie
+          this.habit = {
+            ...data, // Copie les valeurs reçues
+            active: data.active, // S'assure que `active` est bien utilisé
+          };
         },
         (error) => {
           console.error("Erreur lors de la récupération de l'habitude :", error);
@@ -48,17 +53,19 @@ export class HabitFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.isEditing) {
+      console.log('Mise à jour de l\'habitude :', this.habit);
       this.habitService.updateHabit(this.habit).subscribe(
         () => {
           alert('Habitude mise à jour avec succès!');
           this.router.navigate(['/habits']);
         },
         (error) => {
-          console.error("Erreur lors de la mise à jour :", error);
-          alert("Erreur lors de la mise à jour de l'habitude.");
+          console.error('Erreur lors de la mise à jour :', error);
+          alert('Erreur lors de la mise à jour de l\'habitude.');
         }
       );
     } else {
+      console.log('Création d\'une nouvelle habitude :', this.habit);
       this.habitService.createHabit(this.habit).subscribe(
         () => {
           alert('Nouvelle habitude ajoutée avec succès!');

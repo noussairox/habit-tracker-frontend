@@ -1,10 +1,11 @@
-<div class="dashboard-container px-6 py-8 space-y-8 bg-gray-50 text-gray-800">
-    <!-- Résumé des statistiques -->
-    <app-summary></app-summary>
-
-    <!-- Progression globale -->
-    <app-progress-chart></app-progress-chart>
-
-    <!-- Habitudes actives -->
-    <app-active-habits></app-active-habits>
-</div>
+<div class="dashboard-container px-6 py-8 space-y-8 bg-gradient-to-br from-purple-300 via-pink-200 to-yellow-100 min-h-screen">
+    <div class="summary-container">
+      <h2 class="text-3xl font-extrabold text-purple-900 text-center mb-8">Résumé des Statistiques</h2>
+      <app-summary></app-summary>
+    </div>
+  
+    <div class="flex items-center justify-center">
+      <app-progress-chart></app-progress-chart>
+    </div>
+  </div>
+  

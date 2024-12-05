@@ -1,14 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
-  declarations: [],
+  declarations: [
+   
+  ],
   imports: [
-    BrowserModule,
-    FormsModule, // Toujours nécessaire pour ngModel si utilisé
   ],
   providers: [],
-  bootstrap: [], // Vide si vous utilisez bootstrapApplication
+  bootstrap: [], // Point d'entrée principal de l'application
 })
 export class AppModule {}

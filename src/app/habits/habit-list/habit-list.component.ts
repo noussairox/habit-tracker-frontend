@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Requis pour les directives Angular
-import { FormsModule } from '@angular/forms'; // Requis pour [(ngModel)]
-import { RouterModule } from '@angular/router'; // Requis pour [routerLink]
 import { HabitService } from '../../services/habit.service';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-habit-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule], // Ajouter les modules nécessaires
+  imports: [CommonModule, RouterModule, FormsModule], // Ajoutez RouterModule ici
   templateUrl: './habit-list.component.html',
   styleUrls: ['./habit-list.component.css'],
 })
 export class HabitListComponent implements OnInit {
   habits: any[] = [];
-  isActive: boolean | null = null;
+  active: boolean | null = null;
   frequency: string | null = null;
 
   constructor(private habitService: HabitService) {}
@@ -23,20 +23,21 @@ export class HabitListComponent implements OnInit {
   }
 
   getHabits(): void {
-    // Ajout de logs pour vérifier les paramètres envoyés
-    console.log('Paramètres des filtres :', { isActive: this.isActive, frequency: this.frequency });
+    console.log('Filtres appliqués :', { active: this.active, frequency: this.frequency });
   
-    this.habitService.getFilteredHabits(this.isActive, this.frequency).subscribe(
+    this.habitService.getFilteredHabits(this.active, this.frequency).subscribe(
       (data) => {
-        console.log('Données reçues :', data);
-        this.habits = data as any[];
+        console.log('Données reçues du backend :', data); // Log pour vérifier les résultats
+        this.habits = data; // Mettre à jour la liste des habitudes
       },
       (error) => {
-        console.error("Erreur lors de la récupération des habitudes :", error);
-        alert("Erreur lors du chargement des données.");
+        console.error('Erreur lors de la récupération des données :', error);
+        alert('Erreur lors du chargement des habitudes.');
       }
     );
   }
+  
+  
   
 
   deleteHabit(id: number): void {

@@ -1,0 +1,22 @@
+.chart-section {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-6;
+  }
+  
+  .chart-container {
+    @apply bg-white rounded-lg shadow-lg p-6 hover:shadow-2xl transition-transform transform hover:-translate-y-2;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .chart-header {
+    @apply flex justify-between items-center mb-4;
+  }
+  
+  .chart-header h3 {
+    @apply text-xl font-bold text-purple-800;
+  }
+  
+  .chart-header i {
+    @apply text-2xl;
+  }
+  
