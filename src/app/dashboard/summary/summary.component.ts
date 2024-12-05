@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HabitService } from '../../services/habit.service';
 
 @Component({
   selector: 'app-summary',
+  standalone: true, // Composant autonome
+  imports: [CommonModule], // Import des dépendances nécessaires
   templateUrl: './summary.component.html',
   styleUrls: ['./summary.component.css'],
 })

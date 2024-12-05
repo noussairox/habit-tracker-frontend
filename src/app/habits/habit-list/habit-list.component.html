@@ -1,35 +1,42 @@
 <div class="habit-list">
-    <h1>Mes Habitudes</h1>
-  
-    <div class="filters">
-      <label>Statut :</label>
-      <select [(ngModel)]="isActive" (change)="getHabits()">
-        <option [value]="null">Tous</option>
-        <option [value]="true">Actif</option>
-        <option [value]="false">Inactif</option>
-      </select>
-  
-      <label>Fréquence :</label>
-      <select [(ngModel)]="frequency" (change)="getHabits()">
-        <option [value]="null">Tous</option>
-        <option value="quotidienne">Quotidienne</option>
-        <option value="hebdomadaire">Hebdomadaire</option>
-      </select>
-    </div>
-  
-    <ul>
-      <li *ngFor="let habit of habits">
-        <div>
-          <h3>{{ habit.name }}</h3>
-          <p>{{ habit.description }}</p>
-          <p>Fréquence : {{ habit.frequency }}</p>
-          <p>Statut : {{ habit.isActive ? 'Actif' : 'Inactif' }}</p>
-        </div>
-        <button [routerLink]="['/habits/edit', habit.id]">Modifier</button>
-        <button (click)="deleteHabit(habit.id)">Supprimer</button>
-      </li>
-    </ul>
-  
-    <button routerLink="/habits/add" class="add-button">Ajouter une Habitude</button>
+  <h1>Mes Habitudes</h1>
+
+  <div class="filters">
+    <label>Statut :</label>
+    <select [(ngModel)]="active" (change)="getHabits()">
+      <option [ngValue]="null">Tous</option>
+      <option [ngValue]="true">Actif</option>
+      <option [ngValue]="false">Inactif</option>
+    </select>
+
+    <label>Fréquence :</label>
+    <select [(ngModel)]="frequency" (change)="getHabits()">
+      <option [ngValue]="null">Tous</option>
+      <option [value]="'quotidienne'">Quotidienne</option>
+      <option [value]="'hebdomadaire'">Hebdomadaire</option>
+    </select>
   </div>
-  
+
+  <ul>
+    <li *ngFor="let habit of habits" class="habit-card">
+      <div class="habit-details">
+        <h3>{{ habit.name }}</h3>
+        <p>{{ habit.description }}</p>
+        <p>Fréquence : {{ habit.frequency }}</p>
+        <p>Statut : {{ habit.active ? 'Actif' : 'Inactif' }}</p>
+      </div>
+      <div class="habit-actions">
+        <button [routerLink]="['/habits/edit', habit.id]" class="btn-edit">
+          <i class="fas fa-edit"></i> Modifier
+        </button>
+        <button (click)="deleteHabit(habit.id)" class="btn-delete">
+          <i class="fas fa-trash"></i> Supprimer
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <button routerLink="/habits/add" class="btn-add">
+    <i class="fas fa-plus"></i> Ajouter une Habitude
+  </button>
+</div>

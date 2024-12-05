@@ -1,53 +1,47 @@
-<form (ngSubmit)="onSubmit()">
-    <h1>{{ isEditing ? 'Modifier Habitude' : 'Ajouter une Habitude' }}</h1>
-  
-    <!-- Nom -->
-    <div>
-      <label for="name">Nom de l'habitude :</label>
-      <input
-        id="name"
-        [(ngModel)]="habit.name"
-        name="name"
-        required
-        placeholder="Exemple : Lire un livre"
-      />
-      <p class="field-help">Donnez un nom clair à votre habitude.</p>
-    </div>
-  
-    <!-- Description -->
-    <div>
-      <label for="description">Description :</label>
-      <textarea
-        id="description"
-        [(ngModel)]="habit.description"
-        name="description"
-        placeholder="Décrivez cette habitude en quelques mots (Exemple : Lire 20 pages par jour)."
-      ></textarea>
-      <p class="field-help">Ajoutez une description pour mieux définir votre habitude.</p>
-    </div>
-  
-    <!-- Fréquence -->
-    <div>
-      <label for="frequency">Fréquence :</label>
-      <select id="frequency" [(ngModel)]="habit.frequency" name="frequency">
-        <option value="quotidienne">Quotidienne</option>
-        <option value="hebdomadaire">Hebdomadaire</option>
-      </select>
-      <p class="field-help">Indiquez si cette habitude est à faire tous les jours ou toutes les semaines.</p>
-    </div>
-  
-    <!-- Statut -->
-    <div>
-      <label for="isActive">Statut :</label>
-      <select id="isActive" [(ngModel)]="habit.isActive" name="isActive">
-        <option [value]="true">Actif</option>
-        <option [value]="false">Inactif</option>
-      </select>
-      <p class="field-help">Choisissez si cette habitude est actuellement active ou non.</p>
-    </div>
-  
-    <!-- Date de début -->
-    <div>
+<form (ngSubmit)="onSubmit()" class="form-container">
+  <h1 class="form-title">
+    {{ isEditing ? 'Modifier Habitude' : 'Ajouter une Habitude' }}
+  </h1>
+
+  <div class="form-group">
+    <label for="name">Nom de l'habitude :</label>
+    <input
+      id="name"
+      [(ngModel)]="habit.name"
+      name="name"
+      required
+      placeholder="Exemple : Lire un livre"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description :</label>
+    <textarea
+      id="description"
+      [(ngModel)]="habit.description"
+      name="description"
+      placeholder="Décrivez cette habitude en quelques mots (Exemple : Lire 20 pages par jour)."
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="frequency">Fréquence :</label>
+    <select id="frequency" [(ngModel)]="habit.frequency" name="frequency">
+      <option value="quotidienne">Quotidienne</option>
+      <option value="hebdomadaire">Hebdomadaire</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="active">Statut :</label>
+    <select id="active" [(ngModel)]="habit.active" name="active">
+      <option [value]="true">Actif</option>
+      <option [value]="false">Inactif</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
       <label for="startDate">Date de début :</label>
       <input
         id="startDate"
@@ -56,11 +50,8 @@
         name="startDate"
         required
       />
-      <p class="field-help">Sélectionnez la date à laquelle vous voulez commencer cette habitude.</p>
     </div>
-  
-    <!-- Date de fin -->
-    <div>
+    <div class="form-group">
       <label for="endDate">Date de fin :</label>
       <input
         id="endDate"
@@ -68,27 +59,22 @@
         [(ngModel)]="habit.endDate"
         name="endDate"
       />
-      <p class="field-help">Optionnel : Sélectionnez une date de fin pour cette habitude.</p>
     </div>
-  
-    <!-- Objectif -->
-    <div>
-      <label for="targetCount">Objectif à atteindre :</label>
-      <input
-        id="targetCount"
-        type="number"
-        [(ngModel)]="habit.targetCount"
-        name="targetCount"
-        min="0"
-        placeholder="Exemple : 7 (fois par semaine, par mois, etc.)"
-      />
-      <p class="field-help">
-        Indiquez combien de fois cette habitude doit être accomplie (par semaine, par mois, etc.).
-      </p>
-    </div>
-  
-    <button type="submit">
-      {{ isEditing ? 'Mettre à Jour' : 'Ajouter' }}
-    </button>
-  </form>
-  
+  </div>
+
+  <div class="form-group">
+    <label for="targetCount">Objectif à atteindre :</label>
+    <input
+      id="targetCount"
+      type="number"
+      [(ngModel)]="habit.targetCount"
+      name="targetCount"
+      min="0"
+      placeholder="Exemple : 7 (fois par semaine, par mois, etc.)"
+    />
+  </div>
+
+  <button type="submit" class="btn-submit">
+    {{ isEditing ? 'Mettre à Jour' : 'Ajouter' }}
+  </button>
+</form>

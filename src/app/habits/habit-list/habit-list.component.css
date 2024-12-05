@@ -1,56 +1,51 @@
-/* habit-list.component.css */
+/* Liste des habitudes */
 .habit-list {
-    @apply bg-gradient-to-r from-purple-400 via-pink-300 to-yellow-200 p-6 rounded-lg shadow-lg max-w-4xl mx-auto mt-10;
-  }
-  
-  .habit-list h1 {
-    @apply text-4xl font-bold text-center mb-8 text-purple-900;
-  }
-  
-  .filters {
-    @apply flex flex-col md:flex-row justify-between items-center mb-6 gap-4;
-  }
-  
-  .filters label {
-    @apply font-semibold text-purple-700;
-  }
-  
-  .filters select {
-    @apply border border-purple-300 rounded px-3 py-2 bg-white text-purple-700 shadow focus:outline-none focus:ring-2 focus:ring-purple-500;
-  }
-  
-  ul {
-    @apply space-y-6;
-  }
-  
-  li {
-    @apply flex justify-between items-start p-4 bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out;
-  }
-  
-  li div {
-    @apply space-y-2;
-  }
-  
-  li h3 {
-    @apply text-lg font-bold text-purple-800;
-  }
-  
-  li p {
-    @apply text-sm text-purple-600;
-  }
-  
-  button {
-    @apply px-4 py-2 text-sm font-semibold rounded shadow hover:bg-purple-600 hover:text-white transition-colors duration-300;
-  }
-  
-  .add-button {
-    @apply mt-6 block mx-auto bg-purple-500 text-white;
-  }
-  li {
-    @apply transition-transform transform hover:scale-105 duration-200 ease-in-out;
-  }
-  
-  li:hover {
-    @apply bg-purple-100;
-  }
-    
+  @apply bg-gradient-to-br from-purple-300 via-pink-200 to-yellow-100 p-6 rounded-xl shadow-xl max-w-5xl mx-auto my-8;
+}
+
+.habit-list h1 {
+  @apply text-4xl font-extrabold text-purple-900 text-center mb-8;
+}
+
+/* Filtres */
+.filters {
+  @apply flex flex-col md:flex-row justify-between items-center gap-4 mb-6;
+}
+
+.filters label {
+  @apply text-sm font-bold text-purple-800;
+}
+
+.filters select {
+  @apply border border-purple-300 rounded-lg p-3 bg-white shadow focus:ring-2 focus:ring-purple-500;
+}
+
+/* Cartes d'habitudes */
+.habit-card {
+  @apply flex justify-between items-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-transform transform hover:scale-105 mb-4;
+}
+
+.habit-details {
+  @apply flex flex-col space-y-2;
+}
+
+.habit-details h3 {
+  @apply text-lg font-bold text-purple-800;
+}
+
+.habit-actions {
+  @apply flex space-x-4;
+}
+
+.habit-actions button {
+  @apply flex items-center gap-2 bg-purple-500 text-white px-4 py-2 text-sm rounded-lg shadow-md hover:bg-purple-600 transition-transform transform hover:scale-105;
+}
+
+.habit-actions .btn-delete {
+  @apply bg-red-500 hover:bg-red-600;
+}
+
+/* Bouton Ajouter */
+.btn-add {
+  @apply mt-6 flex items-center justify-center bg-purple-500 text-white text-lg px-6 py-3 rounded-lg shadow-md hover:bg-purple-600 transition-transform transform hover:scale-105 w-full max-w-sm mx-auto;
+}
