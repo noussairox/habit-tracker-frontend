@@ -1,0 +1,52 @@
+/* Navbar principale */
+.navbar {
+    @apply flex justify-between items-center bg-gradient-to-r from-purple-600 to-purple-800 p-4 shadow-lg sticky top-0 z-50;
+  }
+  
+  /* Logo */
+  .logo a {
+    @apply text-2xl font-bold text-white hover:text-yellow-300;
+  }
+  
+  /* Liens de navigation */
+  .nav-links {
+    @apply flex space-x-6;
+  }
+  
+  .nav-links a {
+    @apply text-white text-sm font-medium hover:text-yellow-300;
+  }
+  
+  /* Actions utilisateur (notifications + déconnexion) */
+  .auth-actions {
+    @apply flex items-center space-x-4;
+  }
+  
+  /* Notification */
+  .notification-link {
+    @apply relative text-white text-lg hover:text-yellow-300 flex items-center;
+  }
+  
+  .notification-badge {
+    @apply absolute -top-1 -right-2 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center;
+  }
+  
+  /* Infos utilisateur */
+  .auth-info {
+    @apply flex items-center space-x-4;
+  }
+  
+  .auth-info span {
+    @apply text-white text-sm font-medium;
+  }
+  
+  /* Bouton de connexion */
+  .btn-signin {
+    @apply bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-500 transition-transform transform hover:scale-105;
+  }
+  
+  /* Bouton de déconnexion */
+  .btn-logout {
+    @apply bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500 transition-transform transform hover:scale-105;
+  }
+  

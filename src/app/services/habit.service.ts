@@ -112,13 +112,55 @@ export class HabitService {
   /**
  * Récupérer les statistiques de progression (habitudes complétées/restantes)
  */
-getProgressStatistics(): Observable<{ completedHabits: number; remainingHabits: number }> {
-  console.log('Requête envoyée : GET /progress-statistics');
-  const headers = this.getAuthHeaders(); // Inclure le token d'authentification
-  return this.http.get<{ completedHabits: number; remainingHabits: number }>(
-    `${this.apiUrl}/progress-statistics`, 
-    { headers }
-  );
+  getProgressStatistics(): Observable<{ archivedHabits: number; remainingHabits: number }> {
+    console.log('Requête envoyée : GET /progress-statistics');
+    const headers = this.getAuthHeaders();
+    return this.http.get<{ archivedHabits: number; remainingHabits: number }>(
+      `${this.apiUrl}/progress-statistics`, 
+      { headers }
+    );
+  }
+  
+
+updateHabitStreak(id: number): Observable<any> {
+  console.log(`Requête pour mettre à jour le streak de l'habitude ID : ${id}`);
+  const headers = this.getAuthHeaders();
+  return this.http.put(`${this.apiUrl}/${id}/update-streak`, null, { headers });
 }
+
+getArchivedHabits(): Observable<any[]> {
+  console.log('Requête pour récupérer les habitudes archivées');
+  const headers = this.getAuthHeaders();
+  return this.http.get<any[]>(`${this.apiUrl}/archived`, { headers });
+}
+
+archiveHabit(id: number): Observable<any> {
+  console.log(`Requête pour archiver l'habitude ID : ${id}`);
+  const headers = this.getAuthHeaders();
+  return this.http.put(`${this.apiUrl}/${id}/archive`, null, { headers });
+}
+
+toggleHabitStatus(id: number): Observable<any> {
+  console.log(`Requête pour basculer le statut de l'habitude ID : ${id}`);
+  const headers = this.getAuthHeaders();
+  return this.http.put(`${this.apiUrl}/${id}/toggleStatus`, null, { headers });
+}
+
+getPendingNotifications(): Observable<any[]> {
+  const headers = this.getAuthHeaders();
+  return this.http.get<any[]>('http://localhost:8080/api/notif/pending', { headers });
+}
+
+getRecentNotifications(): Observable<any[]> {
+  const headers = this.getAuthHeaders();
+  return this.http.get<any[]>('http://localhost:8080/api/notif/recent', { headers });
+}
+
+deleteNotification(id: number): Observable<any> {
+  console.log(`Requête pour supprimer la notification avec ID : ${id}`);
+  const headers = this.getAuthHeaders();
+  return this.http.delete(`http://localhost:8080/api/notif/${id}`, { headers });
+}
+
 
 }

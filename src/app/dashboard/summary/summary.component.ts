@@ -15,6 +15,7 @@ export class SummaryComponent implements OnInit {
     activeHabits: 0,
     inactiveHabits: 0,
     bestStreak: 0,
+    archivedHabits: 0,
   };
 
   constructor(private habitService: HabitService) {}

@@ -1,0 +1,81 @@
+/* Conteneur principal */
+.progress-container {
+    @apply max-w-6xl mx-auto my-16 p-8 bg-gradient-to-br from-purple-700 via-pink-600 to-yellow-400 rounded-3xl shadow-2xl space-y-12;
+  }
+  
+  /* Titre des sections */
+  .section-title {
+    @apply text-3xl font-extrabold text-white mb-6;
+  }
+  
+  /* --- Statistiques --- */
+  .statistics-section {
+    @apply space-y-8;
+  }
+  
+  .stats-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+  }
+  
+  .stats-card {
+    @apply flex items-center p-6 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 space-x-4;
+  }
+  
+  .stats-icon {
+    @apply w-16 h-16 flex items-center justify-center text-white text-3xl rounded-full shadow-md;
+  }
+  
+  .stats-label {
+    @apply text-sm font-medium text-gray-600;
+  }
+  
+  .stats-value {
+    @apply text-4xl font-bold text-gray-900;
+  }
+  
+  /* Couleurs pour chaque statistique */
+  .stats-completed .stats-icon {
+    @apply bg-green-500;
+  }
+  
+  .stats-remaining .stats-icon {
+    @apply bg-red-500;
+  }
+  
+  /* --- Habitudes Archivées --- */
+  .archived-habits-section {
+    @apply space-y-8;
+  }
+  
+  .archived-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+  
+  .archived-card {
+    @apply p-6 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105 space-y-4;
+  }
+  
+  .archived-header {
+    @apply flex justify-between items-center;
+  }
+  
+  .archived-header h3 {
+    @apply text-lg font-extrabold text-purple-700;
+  }
+  
+  .archived-date {
+    @apply text-xs font-bold text-gray-500 ;
+  }
+  
+  .archived-description {
+    @apply text-sm text-gray-600;
+  }
+  
+  .archived-meta p {
+    @apply text-sm text-gray-700 leading-snug;
+  }
+  
+  .archived-meta p strong {
+    @apply text-gray-900;
+  }
+  

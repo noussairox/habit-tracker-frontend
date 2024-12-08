@@ -1,26 +1,41 @@
-<div class="summary-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div class="stat-card">
+<div class="summary-grid">
+  <div class="stat-card stat-total">
+    <div class="stat-content">
       <h3>Total d'habitudes</h3>
       <p>{{ stats.totalHabits }}</p>
-      <span class="highlight-line"></span>
     </div>
-  
-    <div class="stat-card">
+    <div class="hover-overlay"></div>
+  </div>
+
+  <div class="stat-card stat-active">
+    <div class="stat-content">
       <h3>Habitudes Actives</h3>
       <p>{{ stats.activeHabits }}</p>
-      <span class="highlight-line"></span>
     </div>
-  
-    <div class="stat-card">
+    <div class="hover-overlay"></div>
+  </div>
+
+  <div class="stat-card stat-inactive">
+    <div class="stat-content">
       <h3>Habitudes Inactives</h3>
       <p>{{ stats.inactiveHabits }}</p>
-      <span class="highlight-line"></span>
     </div>
-  
-    <div class="stat-card">
+    <div class="hover-overlay"></div>
+  </div>
+
+  <div class="stat-card stat-streak">
+    <div class="stat-content">
       <h3>Meilleur Streak</h3>
       <p>{{ stats.bestStreak }} jours</p>
-      <span class="highlight-line"></span>
     </div>
+    <div class="hover-overlay"></div>
   </div>
-  
+
+  <div class="stat-card stat-archived">
+    <div class="stat-content">
+      <h3>Habitudes Archivées</h3>
+      <p>{{ stats.archivedHabits }}</p>
+    </div>
+    <div class="hover-overlay"></div>
+  </div>
+</div>

@@ -1,37 +1,36 @@
 <div class="chart-section grid grid-cols-1 lg:grid-cols-2 gap-6">
-    <div class="chart-container">
-      <div class="chart-header">
-        <h3>Progression Globale (Pie Chart)</h3>
-        <i class="fas fa-chart-pie text-purple-700"></i>
-      </div>
-      <ngx-charts-pie-chart
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="pieChartData"
-        [legend]="true"
-        [labels]="true"
-        [doughnut]="true"
-        [legendTitle]="'Légende'">
-      </ngx-charts-pie-chart>
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Progression Globale (Pie Chart)</h3>
+      <i class="fas fa-chart-pie text-purple-700"></i>
     </div>
-  
-    <div class="chart-container">
-      <div class="chart-header">
-        <h3>Progression Globale (Bar Chart)</h3>
-        <i class="fas fa-chart-bar text-purple-700"></i>
-      </div>
-      <ngx-charts-bar-vertical
-        [view]="view"
-        [scheme]="colorScheme"
-        [results]="barChartData"
-        [legend]="true"
-        [xAxis]="true"
-        [yAxis]="true"
-        [showXAxisLabel]="true"
-        [showYAxisLabel]="true"
-        [xAxisLabel]="'Catégories'"
-        [yAxisLabel]="'Valeurs'">
-      </ngx-charts-bar-vertical>
-    </div>
+    <ngx-charts-pie-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="pieChartData"
+      [legend]="true"
+      [labels]="true"
+      [doughnut]="true"
+      [legendTitle]="'Légende'">
+    </ngx-charts-pie-chart>
   </div>
-  
+
+  <div class="chart-container">
+    <div class="chart-header">
+      <h3>Progression Globale (Bar Chart)</h3>
+      <i class="fas fa-chart-bar text-purple-700"></i>
+    </div>
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="barChartData"
+      [legend]="true"
+      [xAxis]="true"
+      [yAxis]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [xAxisLabel]="'Catégories'"
+      [yAxisLabel]="'Valeurs'">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>

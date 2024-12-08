@@ -1,0 +1,25 @@
+<div class="notification-list">
+    <h1 class="notification-title">Notifications</h1>
+    <div *ngIf="isLoading" class="loading">
+      Chargement des notifications...
+    </div>
+    <ul *ngIf="!isLoading && notifications.length > 0" class="notification-items">
+      <li *ngFor="let notification of notifications" class="notification-item">
+        <div class="notification-content">
+          <h3>{{ notification.message }}</h3>
+          <p>Pour l'habitude : <strong>{{ notification.habit.name }}</strong></p>
+          <p>Envoyée le : {{ notification.notificationTime | date:'short' }}</p>
+        </div>
+        <button (click)="deleteNotification(notification.id)" class="delete-button">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+      </li>
+    </ul>
+    <p *ngIf="!isLoading && notifications.length === 0" class="no-notifications">
+      Aucune notification disponible pour le moment.
+    </p>
+  </div>
+  
