@@ -1,29 +1,50 @@
 <div class="habit-list">
   <h1>Mes Habitudes</h1>
 
+  <!-- Filtres -->
   <div class="filters">
-    <label>Statut :</label>
-    <select [(ngModel)]="active" (change)="getHabits()">
-      <option [ngValue]="null">Tous</option>
-      <option [ngValue]="true">Actif</option>
-      <option [ngValue]="false">Inactif</option>
-    </select>
-
-    <label>Fréquence :</label>
-    <select [(ngModel)]="frequency" (change)="getHabits()">
-      <option [ngValue]="null">Tous</option>
-      <option [value]="'quotidienne'">Quotidienne</option>
-      <option [value]="'hebdomadaire'">Hebdomadaire</option>
-    </select>
+    <div class="filter-group">
+      <label for="status">Statut :</label>
+      <select id="status" [(ngModel)]="active" (change)="getHabits()">
+        <option [ngValue]="null">Tous</option>
+        <option [ngValue]="true">Actif</option>
+        <option [ngValue]="false">Inactif</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="frequency">Fréquence :</label>
+      <select id="frequency" [(ngModel)]="frequency" (change)="getHabits()">
+        <option [ngValue]="null">Tous</option>
+        <option [value]="'quotidienne'">Quotidienne</option>
+        <option [value]="'hebdomadaire'">Hebdomadaire</option>
+      </select>
+    </div>
   </div>
 
-  <ul>
+  <!-- Liste des habitudes -->
+  <ul class="habit-list-container">
     <li *ngFor="let habit of habits" class="habit-card">
       <div class="habit-details">
         <h3>{{ habit.name }}</h3>
-        <p>{{ habit.description }}</p>
-        <p>Fréquence : {{ habit.frequency }}</p>
-        <p>Statut : {{ habit.active ? 'Actif' : 'Inactif' }}</p>
+        <p class="text-sm text-gray-600">{{ habit.description }}</p>
+        <div class="habit-meta">
+          <p>Fréquence : <span class="font-semibold">{{ habit.frequency }}</span></p>
+          <p>Statut : <span class="font-semibold">{{ habit.active ? 'Actif' : 'Inactif' }}</span></p>
+          <p>Date de début : {{ habit.startDate }}</p>
+          <p>Date de fin : {{ habit.endDate }}</p>
+          <p>Objectif : {{ habit.targetCount }} fois</p>
+          <div class="streak-container">
+            <div class="streak-item">
+              <p>Streak Actuel :</p>
+              <span>{{ habit.currentStreak }}</span>
+            </div>
+            <div class="streak-item">
+              <p>Meilleur Streak :</p>
+              <span>{{ habit.bestStreak }}</span>
+            </div>
+          </div>
+          
+        </div>
       </div>
       <div class="habit-actions">
         <button [routerLink]="['/habits/edit', habit.id]" class="btn-edit">
@@ -32,10 +53,17 @@
         <button (click)="deleteHabit(habit.id)" class="btn-delete">
           <i class="fas fa-trash"></i> Supprimer
         </button>
+        <button *ngIf="!habit.active" (click)="toggleStatus(habit.id)" class="btn-toggle-status">
+          Activer
+        </button>
+        <button *ngIf="habit.active" (click)="updateStreak(habit.id)" class="btn-streak">
+          <i class="fas fa-fire"></i> Augmenter Streak
+        </button>
       </div>
     </li>
   </ul>
 
+  <!-- Bouton pour ajouter une habitude -->
   <button routerLink="/habits/add" class="btn-add">
     <i class="fas fa-plus"></i> Ajouter une Habitude
   </button>

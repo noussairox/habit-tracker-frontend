@@ -1,43 +1,27 @@
-<nav class="bg-[#814c93] text-white p-4 flex justify-between items-center">
+<nav class="navbar">
   <!-- Logo -->
-  <div class="text-2xl font-bold">
-    <a href="/homePage" class="hover:text-[#FFDFD6]">Habit Manager</a>
+  <div class="logo">
+    <a href="/homePage">Habit Manager</a>
   </div>
 
   <!-- Liens de navigation -->
-  <ul class="flex space-x-4">
-    <!-- Affiche Home uniquement avant ou après la connexion -->
-    <li>
-      <a href="/homePage" class="hover:text-[#FFDFD6]">Home</a>
-    </li>
-
-    <!-- Liens affichés uniquement après la connexion -->
-    <li *ngIf="isAuthenticated()">
-      <a href="/dashboard" class="hover:text-[#FFDFD6]">Dashboard</a>
-    </li>
-    <li *ngIf="isAuthenticated()">
-      <a href="/habits" class="hover:text-[#FFDFD6]">Habits</a>
-    </li>
-    <li *ngIf="isAuthenticated()">
-      <a href="/profile" class="hover:text-[#FFDFD6]">Profile</a>
-    </li>
+  <ul class="nav-links">
+    <li><a href="/homePage">Home</a></li>
+    <li *ngIf="isAuthenticated()"><a href="/dashboard">Dashboard</a></li>
+    <li *ngIf="isAuthenticated()"><a href="/habits">Habits</a></li>
+    <li *ngIf="isAuthenticated()"><a href="/habits/progress">Progress</a></li>
   </ul>
 
-  <!-- Boutons Connexion / Déconnexion -->
-  <div>
-    <!-- Afficher Connexion uniquement avant la connexion -->
-    <a *ngIf="!isAuthenticated()" href="/signin" 
-       class="bg-[#547427] px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-[#E6D9A2] hover:text-black">
-      Connexion
-    </a>
-
-    <!-- Afficher Déconnexion uniquement après la connexion -->
-    <div *ngIf="isAuthenticated()" class="flex items-center space-x-4">
+  <!-- Connexion / Notifications / Déconnexion -->
+  <div class="auth-actions">
+    <a *ngIf="!isAuthenticated()" href="/signin" class="btn-signin">Connexion</a>
+    <div *ngIf="isAuthenticated()" class="auth-info">
+      <a href="/notifications" class="notification-link">
+        <i class="fas fa-bell"></i>
+        <span *ngIf="unreadNotifications > 0" class="notification-badge">{{ unreadNotifications }}</span>
+      </a>
       <span>Bienvenue, {{ username }}</span>
-      <button (click)="logout()" 
-              class="bg-red-700 px-4 py-2 rounded-s-2xl rounded-b-3xl hover:bg-red-400 hover:text-black">
-        Déconnexion
-      </button>
+      <button (click)="logout()" class="btn-logout">Déconnexion</button>
     </div>
   </div>
 </nav>

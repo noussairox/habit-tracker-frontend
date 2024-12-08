@@ -6,6 +6,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { HabitListComponent } from './habits/habit-list/habit-list.component';
 import { HabitFormComponent } from './habits/habit-form/habit-form.component';
+import { HabitProgressComponent } from './habits/habit-progress/habit-progress.component';
+import { NotificationListComponent } from './notification-list/notification-list.component';
 
 export const routes: Routes = [
   // Routes publiques
@@ -20,6 +22,10 @@ export const routes: Routes = [
   { path: 'habits', component: HabitListComponent, canActivate: [AuthGuard] },
   { path: 'habits/add', component: HabitFormComponent, canActivate: [AuthGuard] },
   { path: 'habits/edit/:id', component: HabitFormComponent, canActivate: [AuthGuard] },
+  { path: 'habits/progress', component: HabitProgressComponent, canActivate: [AuthGuard] },
+  { path: 'notifications', component: NotificationListComponent,canActivate:[AuthGuard] },
+
+
   // Redirections
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: '**', redirectTo: '/signin' },

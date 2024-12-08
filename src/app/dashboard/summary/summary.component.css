@@ -1,49 +1,70 @@
+/* Grid principale */
 .summary-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8;
+}
+
+/* Carte de statistique */
+.stat-card {
+  @apply relative p-8 bg-white rounded-2xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  position: relative;
+}
+
+/* Contenu des statistiques */
+.stat-content h3 {
+  @apply text-lg font-semibold text-gray-600;
+}
+
+.stat-content p {
+  @apply text-5xl font-extrabold text-purple-700;
+  animation: fade-in 0.6s ease-in-out;
+}
+
+/* Overlay pour animation de hover */
+.hover-overlay {
+  @apply absolute inset-0 rounded-2xl opacity-0 bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-500;
+  transition: opacity 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.stat-card:hover .hover-overlay {
+  @apply opacity-50;
+}
+
+/* Effets d'animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .stat-card {
-    @apply p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-transform transform hover:-translate-y-2 relative overflow-hidden;
-    position: relative;
-    text-align: center;
-    border: 1px solid #e5e7eb;
-    background: linear-gradient(135deg, #fdfbff, #f3f4f6);
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* Animation des cartes */
-  .stat-card:hover {
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
-    transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .stat-card h3 {
-    @apply text-lg font-bold text-purple-900;
-  }
-  
-  .stat-card p {
-    @apply text-4xl font-extrabold text-purple-700;
-    animation: bounce-in 0.8s;
-  }
-  
-  /* Ligne de mise en valeur */
-  .highlight-line {
-    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-purple-500 h-1 w-16 rounded-lg;
-  }
-  
-  /* Animation de rebond */
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
+}
+
+.stat-card:hover {
+  @apply transform scale-105;
+}
+
+/* Styles personnalisés pour chaque statistique */
+.stat-total {
+  @apply border-t-4 border-purple-600;
+}
+
+.stat-active {
+  @apply border-t-4 border-green-500;
+}
+
+.stat-inactive {
+  @apply border-t-4 border-red-500;
+}
+
+.stat-streak {
+  @apply border-t-4 border-yellow-500;
+}
+
+.stat-archived {
+  @apply border-t-4 border-blue-500;
+}
